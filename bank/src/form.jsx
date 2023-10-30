@@ -1,21 +1,85 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 function Transaction(){
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
     const [amount, setAmount] = useState('')
-    const [date] = useState(new Date())
+    const [date,setDate] = useState(new Date())
+    const [submittedData, setsubmittedData] = useState([])
+    const formData = {
+        description, 
+        category, 
+        amount,
+        date,
+    }
+    const dataArray = [...submittedData, formData]
+/*
+    function dataChange(event){
+        setAmount(event.target.value),
+        setCategory(event.target.value),
+        setDescription(event.target.value),
+        setDate(event.target.value)
 
-    function handleSubmit(e){
+    }*/
+   
+
+    function HandleSubmit(e){
         e.preventDefault()
-        const formData = {
-            description, category, amount ,date
-        }
+         //clearing inputs fields
+        setAmount('')
+        setCategory('')
+        setDate('')
+        setDescription("")
+        setsubmittedData(dataArray)
+       
         console.log(formData)
+        
+            fetch('http://localhost:3000/transactions',{
+                method:"POST",
+                headers:{
+                    "Content-Type": "application.json",
+                },
+                body:JSON.stringify(dataArray),
+            })
+                .then((response) => response.json())
+                .then((newTrans=>  {
+                    return newTrans()
+    
+                }))
+        
+            
 
     }
+
+    const listSubs = submittedData.map((data, index) =>{
+        return (
+            <div>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Amount(in Ksh)</th>
+                    </tr>
+                    <tr key={index}>
+                        <td >
+                              {data.category} 
+                        </td>
+                        <td>
+                            {data.description}
+                        </td>
+                        <td>
+                            {data.amount}
+                        </td>
+                        <td>{data.setDate}</td>
+                    </tr>
+                   
+                </table>
+            </div>
+        )
+    })
     return(
-        <form onSubmit={handleSubmit}>
+        <div>
+                    <form onSubmit={HandleSubmit}>
             <h4>Make a Transaction</h4>
             <br />
             <label htmlFor="description">Description</label>:
@@ -37,6 +101,11 @@ function Transaction(){
             <input type="submit" value="Make Transaction"/>
 
         </form>
+        
+        <h3>Transactions Made</h3>
+        {listSubs}
+        
+        </div>
     )
 }
 
