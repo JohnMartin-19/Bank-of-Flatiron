@@ -56,18 +56,18 @@ function Transaction(){
             <div>
                 <table>
                     <tr>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Amount(in Ksh)</th>
+                        <th style={{padding:"10px"}}>Category</th>
+                        <th style={{padding:"10px"}}>Description</th>
+                        <th style={{padding:"10px"}}>Amount(in Ksh)</th>
                     </tr>
                     <tr key={index}>
-                        <td >
+                        <td style={{padding:"10px"}}>
                               {data.category} 
                         </td>
-                        <td>
+                        <td style={{padding:"10px"}}>
                             {data.description}
                         </td>
-                        <td>
+                        <td style={{padding:"10px"}}>
                             {data.amount}
                         </td>
                         <td>{data.setDate}</td>
@@ -83,22 +83,24 @@ function Transaction(){
             <h4>Make a Transaction</h4>
             <br />
             <label htmlFor="description">Description</label>:
-            <input type="text" id="desc" value={description} onChange={(e)=>
+            <input style={{padding:"10px"}} type="text" id="desc" value={description} onChange={(e)=>
             setDescription(e.target.value)}/>
 
             <br />
             <br />
             <label htmlFor="category">Category</label>:
-            <input type="text" id="cat" value={category} onChange={(e)=>
+            <input style={{padding:"10px"}} type="text" id="cat" value={category} onChange={(e)=>
             setCategory(e.target.value)}/>
 
             <br />
             <br />
             <label htmlFor="amount">Amount</label>:
-            <input type="number" id="num" value={amount} onChange={(e)=>
+            <input style={{padding:"10px"}} type="number" id="num" value={amount} onChange={(e)=>
             setAmount(e.target.value)}/>
             <br />
-            <input type="submit" value="Make Transaction"/>
+            <input 
+           style={
+            {backgroundColor:"green"}}  type="submit" value="Make Transaction"/>
 
         </form>
         
