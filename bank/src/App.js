@@ -1,5 +1,6 @@
-
+import React from 'react';
 import './App.css';
+import Transaction from './form';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         
         <p>
          <h1>Welcome to the Bank of Flation</h1>
+         <Transaction />
         </p>
         
       </header>
