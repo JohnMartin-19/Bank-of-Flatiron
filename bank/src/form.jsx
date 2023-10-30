@@ -4,7 +4,7 @@ function Transaction(){
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
     const [amount, setAmount] = useState('')
-    const [date] = useState(Date.now())
+    const [date] = useState(new Date())
 
     function handleSubmit(e){
         e.preventDefault()
