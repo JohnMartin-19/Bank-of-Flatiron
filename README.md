@@ -1,1 +1,2 @@
 # Bank-of-Flatiron
+Having covered some basics of REACTJS, I was able to tackle this challenge using the basic learnt concepts which inludes hooks, states, events and props. Also, there is fetching data from the local server.
