@@ -4,6 +4,8 @@ import Transaction from './form';
 //import Display from './table';
 
 function App() {
+
+
   return (
     <div className="App">
       <header className="App-header">

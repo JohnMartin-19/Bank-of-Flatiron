@@ -1,11 +1,12 @@
-import React, { useState,useEffect } from "react";
+import React, { useState} from "react";
 
 function Transaction(){
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
     const [amount, setAmount] = useState('')
-    const [date,setDate] = useState(new Date())
+    const [date] = useState(new Date())
     const [submittedData, setsubmittedData] = useState([])
+    const [search, setSearch] = useState("")
     const formData = {
         description, 
         category, 
@@ -28,7 +29,7 @@ function Transaction(){
          //clearing inputs fields
         setAmount('')
         setCategory('')
-        setDate('')
+
         setDescription("")
         setsubmittedData(dataArray)
        
@@ -77,9 +78,16 @@ function Transaction(){
             </div>
         )
     })
+
+   // const filtered = listSubs.filter(
+    //    (listSub)=> {
+    //       return  listSub
+      //  }
+     //   )
+
     return(
         <div>
-                    <form onSubmit={HandleSubmit}>
+            <form onSubmit={HandleSubmit}>
             <h4>Make a Transaction</h4>
             <br />
             <label htmlFor="description">Description</label>:
@@ -98,6 +106,12 @@ function Transaction(){
             <input style={{padding:"10px"}} type="number" id="num" value={amount} onChange={(e)=>
             setAmount(e.target.value)}/>
             <br />
+            <br />
+            <label htmlFor="category">SearchTransaction</label>:
+            <input style={{padding:"10px"}} type="text" id="search" value={search} onChange={(e)=>
+            setSearch(e.target.value)}/>
+            <br />
+            <br />
             <input 
            style={
             {backgroundColor:"green"}}  type="submit" value="Make Transaction"/>
@@ -107,6 +121,8 @@ function Transaction(){
         <h3>Transactions Made</h3>
         {listSubs}
         
+
+
         </div>
     )
 }
